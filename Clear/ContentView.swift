@@ -60,11 +60,7 @@ struct ContentView: View {
         }
         .onAppear(){
             
-            todoList.addTodo(title: "Ann", date: generateRandomDate(), startColor: .blue)
-            todoList.addTodo(title: "Nax", date: generateRandomDate(), startColor: .red)
-            todoList.addTodo(title: "Spidy", date: generateRandomDate(), startColor: .pink)
-            todoList.addTodo(title: "Zeoo", date: generateRandomDate(), startColor: .yellow)
-            todoList.addTodo(title: "Pace", date: generateRandomDate(), startColor: .green)
+         
         }
         
     }
