@@ -37,7 +37,18 @@ struct EditTodoSheet: View {
                     TextField("Enter todo name", text: $editedCaption)
                         
                 }
-                Toggle( isOn: $isComplete){Text("Status")}
+                Section{
+                    Toggle( isOn: $isComplete){Text("Status")}
+                }
+                
+//For Delete Operation
+//                Section{
+//                    
+//                    Button( role: .destructive, action: {todoList.deleteTodo(at: todoIndex(todo: todo))})
+//                    {
+//                        Text("Delete")
+//                    }
+//                }
                 
             }
             .navigationBarTitle("Edit Todo", displayMode: .inline)
