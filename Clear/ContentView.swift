@@ -54,6 +54,7 @@ struct ContentView: View {
         .onAppear(){
             
             todoList.sortTodos()
+            
         }
         
     }
