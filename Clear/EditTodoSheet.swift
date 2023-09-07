@@ -15,6 +15,7 @@ struct EditTodoSheet: View {
     @Binding var isComplete: Bool // Add this line
 
     @State private var editedTitle: String
+    @State private var editedCaption: String
 //    @State private var isComplete:Bool
     
     init(isPresented: Binding<Bool>, todoList: TodoList, todo: Todo,isComplete: Binding<Bool>) {
@@ -22,6 +23,7 @@ struct EditTodoSheet: View {
         self.todoList = todoList
         self.todo = todo
         _editedTitle = State(initialValue: todo.title)
+        _editedCaption = State(initialValue: todo.caption)
         self._isComplete = isComplete // Initialize isCompleted
 
     }
@@ -32,6 +34,8 @@ struct EditTodoSheet: View {
                 Section(header: Text("Edit Todo")) {
                     TextField("Enter todo name", text: $editedTitle)
                         .focused($isFocused)
+                    TextField("Enter todo name", text: $editedCaption)
+                        
                 }
                 Toggle( isOn: $isComplete){Text("Status")}
                 

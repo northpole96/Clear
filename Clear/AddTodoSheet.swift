@@ -12,6 +12,7 @@ struct AddTodoSheet: View {
     @Binding var isPresented: Bool
     @ObservedObject var todoList: TodoList
     @State private var newTodoTitle = ""
+    @State private var newCaption=""
     
     var body: some View {
         NavigationView {
@@ -20,6 +21,9 @@ struct AddTodoSheet: View {
                     TextField("Enter todo name", text: $newTodoTitle)
                     
                         .focused($isFocused)
+                    TextField("Some extra", text: $newCaption)
+                    
+                        
                 }
             }
             .navigationBarTitle("Add Todo", displayMode: .inline)
@@ -28,7 +32,7 @@ struct AddTodoSheet: View {
                     isPresented = false
                 },
                 trailing: Button("Add") {
-                    todoList.addTodo(title: newTodoTitle)
+                    todoList.addTodo(title: newTodoTitle,caption: newCaption)
                     isPresented = false
                 }.disabled(newTodoTitle.isEmpty)
             )

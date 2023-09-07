@@ -37,9 +37,10 @@ struct TodoListItem: View {
                     
                 }
 //                .sensoryFeedback(.success, trigger: isCompleted)
-            
-            Text(todo.title)
-                
+            VStack(alignment:.leading){
+                Text(todo.title).fontWeight(.medium)
+                Text(todo.caption).font(.caption)
+            }
             Spacer()
         }
         
