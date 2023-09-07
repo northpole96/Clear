@@ -53,7 +53,7 @@ struct ContentView: View {
         }
         .onAppear(){
             
-            todoList.sortTodos()
+//            todoList.sortTodos()
         }
         
     }
