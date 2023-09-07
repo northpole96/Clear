@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct TodoListItem: View {
+    let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy) // Initialize feedback generator
     @EnvironmentObject private var todoList: TodoList
     @State private var isEditSheetPresented = false
     @State private var isCompleted: Bool
@@ -24,13 +26,14 @@ struct TodoListItem: View {
         HStack{
 //            Toggle("", isOn: $isCompleted)
             Toggle("", isOn: Binding(get: { todo.isCompleted }, set: { newValue in
+                feedbackGenerator.impactOccurred()
                 withAnimation(){
                     todoList.editTodo(at: todoIndex(todo: todo), newTitle: todo.title, isCompleted: newValue)}
             }))
                 .toggleStyle(CheckboxToggleStyle2())
                 .onChange(of: isCompleted) { newValue in
-                    let impactHeavy = UIImpactFeedbackGenerator(style: .soft)
-                    impactHeavy.impactOccurred()
+                   
+                  
                     withAnimation(){
                         todoList.editTodo(at: todoIndex(todo: todo), newTitle: todo.title, isCompleted: isCompleted)
                     }
@@ -50,6 +53,7 @@ struct TodoListItem: View {
         .contentShape(Rectangle())
         .onTapGesture {
             isEditSheetPresented = true
+            
         }
         
         .sheet(isPresented: $isEditSheetPresented) {
