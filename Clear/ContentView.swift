@@ -5,26 +5,20 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @EnvironmentObject private var todoList: TodoList
+//    @Environment(\.managedObjectContext) var moc
+//    @FetchRequest(sortDescriptors: []) var todos: FetchedResults<Todo>
+    @EnvironmentObject var listViewModel:ListViewModel
     @State private var isSheetPresented = false
     @State private var newTodoTitle = ""
     
     var body: some View {
         NavigationView {
             VStack {
-//                List {
-//                    ForEach(todoList.todos) { todo in
-//                        TodoListItem(todo: todo)
-//                    }
-//                    .onDelete(perform: deleteTodo)
-//                    
-//                   
-//                    
-//                }
+
                 
                 List {
                     Section(header: Text("Incomplete Todos")) {
-                        ForEach(todoList.todos) { todo in
+                        ForEach(listViewModel.todos) { todo in
                             TodoListItem(todo: todo)
                         }
                         .onDelete(perform: deleteTodo)
@@ -48,21 +42,20 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isSheetPresented) {
-                AddTodoSheet(isPresented: $isSheetPresented, todoList: todoList)
+                AddTodoSheet(isPresented: $isSheetPresented)
             }
         }
         .onAppear(){
             
-            todoList.sortTodos()
+            listViewModel.getItems()
             
         }
         
     }
     
     private func deleteTodo(at offsets: IndexSet) {
-        for index in offsets {
-            todoList.deleteTodo(at: index)
-        }
+        listViewModel.deleteItems(indexSet: offsets)
+        listViewModel.getItems()
     }
     
     func generateRandomDate()->Date {
@@ -87,5 +80,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+//            .environmentObject(ListViewModel())
     }
 }

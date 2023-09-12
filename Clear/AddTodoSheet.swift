@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct AddTodoSheet: View {
+    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var listViewModel:ListViewModel
     @FocusState private var isFocused:Bool
     @Binding var isPresented: Bool
-    @ObservedObject var todoList: TodoList
     @State private var newTodoTitle = ""
     @State private var newCaption=""
     
@@ -32,7 +33,7 @@ struct AddTodoSheet: View {
                     isPresented = false
                 },
                 trailing: Button("Add") {
-                    todoList.addTodo(title: newTodoTitle,caption: newCaption)
+                    listViewModel.addItem(title: newTodoTitle, caption: newCaption)
                     isPresented = false
                 }.disabled(newTodoTitle.isEmpty)
             )
@@ -40,6 +41,14 @@ struct AddTodoSheet: View {
         .onAppear(){
             isFocused=true
         }
+    }
+    
+    func add() {
+        let td = Todo(context: moc)
+        td.id = UUID()
+        td.title = newTodoTitle
+        td.caption = newCaption
+        try? moc.save()
     }
 }
 

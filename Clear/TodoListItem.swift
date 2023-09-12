@@ -10,39 +10,46 @@ import UIKit
 
 struct TodoListItem: View {
     let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy) // Initialize feedback generator
-    @EnvironmentObject private var todoList: TodoList
+    @ObservedObject var todo:Todo
+    @EnvironmentObject var listViewModel:ListViewModel
+    
+   
+    
+
     @State private var isEditSheetPresented = false
     @State private var isCompleted: Bool
     
-    let todo: Todo
     
-    init(todo: Todo) {
+//    
+    init(todo:Todo) {
         self.todo = todo
-        _isCompleted = State(initialValue: todo.isCompleted)
+        _isCompleted = State(initialValue: todo.isCompletedd)
     }
     
     
     var body: some View {
         HStack{
-//            Toggle("", isOn: $isCompleted)
-            Toggle("", isOn: Binding(get: { todo.isCompleted }, set: { newValue in
-                feedbackGenerator.impactOccurred()
-                withAnimation(){
-                    todoList.editTodo(at: todoIndex(todo: todo), newTitle: todo.title, isCompleted: newValue)}
-            }))
+
+            Toggle("", isOn: $isCompleted)
                 .toggleStyle(CheckboxToggleStyle2())
                 .onChange(of: isCompleted) { newValue in
                    
-                  
-                    withAnimation(){
-                        todoList.editTodo(at: todoIndex(todo: todo), newTitle: todo.title, isCompleted: isCompleted)
-                    }
+                    todo.isCompletedd=isCompleted
+                    listViewModel.updateItem(item: todo)
+                    print(todo.isCompletedd)
                     
                 }
-//                .sensoryFeedback(.success, trigger: isCompleted)
+                .onChange(of: todo.isCompletedd){ newValue in
+                
+                    isCompleted=newValue
+                    
+                }
+                
+
             VStack(alignment:.leading){
-                Text(todo.title).fontWeight(.medium)
-                Text(todo.caption).font(.caption)
+                Text(todo.title ?? "").fontWeight(.medium)
+                Text(todo.caption ?? "").font(.caption)
+//                Text(String(todo.isCompletedd))
             }
             Spacer()
         }
@@ -57,17 +64,17 @@ struct TodoListItem: View {
         }
         
         .sheet(isPresented: $isEditSheetPresented) {
-            EditTodoSheet(isPresented: $isEditSheetPresented, todoList: todoList, todo: todo,isComplete: $isCompleted)
-            
+            EditTodoSheet(isPresented: $isEditSheetPresented,todo: todo)
+        
         }
     }
     
-    private func todoIndex(todo: Todo) -> Int {
-        guard let index = todoList.todos.firstIndex(where: { $0.id == todo.id }) else {
-            fatalError("Todo not found")
-        }
-        return index
-    }
+//    private func todoIndex(todo: Todo) -> Int {
+//        guard let index = todoList.todos.firstIndex(where: { $0.id == todo.id }) else {
+//            fatalError("Todo not found")
+//        }
+//        return index
+//    }
 }
 
 

@@ -10,12 +10,16 @@ import SwiftUI
 
 @main
 struct ClearApp: App {
-    @StateObject private var todoList = TodoList()
+//    @StateObject private var dataController = DataController()
+    @StateObject var listViewModel:ListViewModel=ListViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(todoList)
+                .environmentObject(listViewModel)
+            
+                
+//                .environment(\.managedObjectContext,dataController.container.viewContext)
         }
     }
 }

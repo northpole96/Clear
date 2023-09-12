@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct EditTodoSheet: View {
+    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var listViewModel:ListViewModel
     @FocusState private var isFocused:Bool
     @Binding var isPresented: Bool
-    @ObservedObject var todoList: TodoList
-    var todo: Todo
-    @Binding var isComplete: Bool // Add this line
-
+   @ObservedObject var todo: Todo
+//    @Binding var isComplete: Bool
+//    @ObservedObject  var todo:
     @State private var editedTitle: String
     @State private var editedCaption: String
-//    @State private var isComplete:Bool
-    
-    init(isPresented: Binding<Bool>, todoList: TodoList, todo: Todo,isComplete: Binding<Bool>) {
+    @State private var completionStatus:Bool
+    init(isPresented: Binding<Bool>, todo: Todo) {
         self._isPresented = isPresented
-        self.todoList = todoList
         self.todo = todo
-        _editedTitle = State(initialValue: todo.title)
-        _editedCaption = State(initialValue: todo.caption)
-        self._isComplete = isComplete // Initialize isCompleted
+        _editedTitle = State(initialValue: todo.title!)
+        _editedCaption = State(initialValue: todo.caption!)
+        _completionStatus=State(initialValue: todo.isCompletedd)
 
     }
     
@@ -32,13 +31,15 @@ struct EditTodoSheet: View {
         NavigationView {
             Form {
                 Section(header: Text("Edit Todo")) {
+                    
                     TextField("Enter todo name", text: $editedTitle)
-                        .focused($isFocused)
-                    TextField("Enter todo name", text: $editedCaption)
-                        
+                            .focused($isFocused)
+                    TextField("Enter todo name", text:$editedCaption)
+
+                    
                 }
                 Section{
-                    Toggle( isOn: $isComplete){Text("Status")}
+                    Toggle( isOn: $completionStatus){Text("Status")}
                 }
                 
 //For Delete Operation
@@ -57,23 +58,27 @@ struct EditTodoSheet: View {
                     isPresented = false
                 },
                 trailing: Button("Save") {
-                    todoList.editTodo(at: todoIndex(todo: todo), newTitle: editedTitle,isCompleted: isComplete)
+                    todo.title=editedTitle
+                    todo.caption=editedCaption
+                    todo.isCompletedd=completionStatus
+                    listViewModel.updateItem(item: todo)
                     isPresented = false
-                    print(todoList.todos)
-                }.disabled(editedTitle.isEmpty)
+                    
+                }.disabled(todo.title!.isEmpty)
             )
         }
         .onAppear(){
             isFocused=true
         }
     }
+
     
-    private func todoIndex(todo: Todo) -> Int {
-        guard let index = todoList.todos.firstIndex(where: { $0.id == todo.id }) else {
-            fatalError("Todo not found")
-        }
-        return index
-    }
+//    private func todoIndex(todo: Todo) -> Int {
+//        guard let index = todoList.todos.firstIndex(where: { $0.id == todo.id }) else {
+//            fatalError("Todo not found")
+//        }
+//        return index
+//    }
 }
 
 

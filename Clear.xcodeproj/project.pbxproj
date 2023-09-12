@@ -11,12 +11,14 @@
 		1F1866DF2A7BDB7500C3ADAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1866DE2A7BDB7500C3ADAC /* ContentView.swift */; };
 		1F1866E12A7BDB7A00C3ADAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F1866E02A7BDB7A00C3ADAC /* Assets.xcassets */; };
 		1F1866E42A7BDB7A00C3ADAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F1866E32A7BDB7A00C3ADAC /* Preview Assets.xcassets */; };
+		1F272A642AAFA066001EDD52 /* Todom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F272A622AAFA066001EDD52 /* Todom.xcdatamodeld */; };
+		1F272A662AAFA0C8001EDD52 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F272A652AAFA0C8001EDD52 /* DataController.swift */; };
 		1F29B1112AA9767B00851076 /* HexClor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29B1102AA9767B00851076 /* HexClor.swift */; };
 		1F4146B62A9ADF94008D9F3D /* KeyboardTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4146B52A9ADF94008D9F3D /* KeyboardTopView.swift */; };
+		1F53476D2AB00857005A7EEA /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F53476C2AB00857005A7EEA /* ListViewModel.swift */; };
 		1FDCF2772A9EE8A60056FE06 /* TodoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCF2762A9EE8A60056FE06 /* TodoListItem.swift */; };
 		1FDCF27D2A9EE9830056FE06 /* EditTodoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCF27C2A9EE9830056FE06 /* EditTodoSheet.swift */; };
 		1FDCF27F2A9EE9C40056FE06 /* AddTodoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCF27E2A9EE9C40056FE06 /* AddTodoSheet.swift */; };
-		1FDCF2812A9EEA040056FE06 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCF2802A9EEA040056FE06 /* Todo.swift */; };
 		1FDCF2832A9EEA530056FE06 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCF2822A9EEA530056FE06 /* CheckboxToggleStyle.swift */; };
 		1FDCF2852A9F1E950056FE06 /* CheckboxToggleStyle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCF2842A9F1E950056FE06 /* CheckboxToggleStyle2.swift */; };
 /* End PBXBuildFile section */
@@ -27,12 +29,14 @@
 		1F1866DE2A7BDB7500C3ADAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1F1866E02A7BDB7A00C3ADAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F1866E32A7BDB7A00C3ADAC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1F272A632AAFA066001EDD52 /* Todom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todom.xcdatamodel; sourceTree = "<group>"; };
+		1F272A652AAFA0C8001EDD52 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		1F29B1102AA9767B00851076 /* HexClor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexClor.swift; sourceTree = "<group>"; };
 		1F4146B52A9ADF94008D9F3D /* KeyboardTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTopView.swift; sourceTree = "<group>"; };
+		1F53476C2AB00857005A7EEA /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		1FDCF2762A9EE8A60056FE06 /* TodoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItem.swift; sourceTree = "<group>"; };
 		1FDCF27C2A9EE9830056FE06 /* EditTodoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoSheet.swift; sourceTree = "<group>"; };
 		1FDCF27E2A9EE9C40056FE06 /* AddTodoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoSheet.swift; sourceTree = "<group>"; };
-		1FDCF2802A9EEA040056FE06 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		1FDCF2822A9EEA530056FE06 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		1FDCF2842A9F1E950056FE06 /* CheckboxToggleStyle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,7 +80,9 @@
 				1FDCF2762A9EE8A60056FE06 /* TodoListItem.swift */,
 				1F4146B52A9ADF94008D9F3D /* KeyboardTopView.swift */,
 				1FDCF2842A9F1E950056FE06 /* CheckboxToggleStyle2.swift */,
-				1FDCF2802A9EEA040056FE06 /* Todo.swift */,
+				1F53476C2AB00857005A7EEA /* ListViewModel.swift */,
+				1F272A622AAFA066001EDD52 /* Todom.xcdatamodeld */,
+				1F272A652AAFA0C8001EDD52 /* DataController.swift */,
 				1F1866E02A7BDB7A00C3ADAC /* Assets.xcassets */,
 				1F1866E22A7BDB7A00C3ADAC /* Preview Content */,
 			);
@@ -169,8 +175,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FDCF2812A9EEA040056FE06 /* Todo.swift in Sources */,
+				1F272A662AAFA0C8001EDD52 /* DataController.swift in Sources */,
 				1F1866DF2A7BDB7500C3ADAC /* ContentView.swift in Sources */,
+				1F53476D2AB00857005A7EEA /* ListViewModel.swift in Sources */,
 				1F4146B62A9ADF94008D9F3D /* KeyboardTopView.swift in Sources */,
 				1F29B1112AA9767B00851076 /* HexClor.swift in Sources */,
 				1FDCF2772A9EE8A60056FE06 /* TodoListItem.swift in Sources */,
@@ -178,6 +185,7 @@
 				1FDCF27D2A9EE9830056FE06 /* EditTodoSheet.swift in Sources */,
 				1FDCF2832A9EEA530056FE06 /* CheckboxToggleStyle.swift in Sources */,
 				1F1866DD2A7BDB7500C3ADAC /* ClearApp.swift in Sources */,
+				1F272A642AAFA066001EDD52 /* Todom.xcdatamodeld in Sources */,
 				1FDCF2852A9F1E950056FE06 /* CheckboxToggleStyle2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +394,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F272A622AAFA066001EDD52 /* Todom.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F272A632AAFA066001EDD52 /* Todom.xcdatamodel */,
+			);
+			currentVersion = 1F272A632AAFA066001EDD52 /* Todom.xcdatamodel */;
+			path = Todom.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1F1866D12A7BDB7500C3ADAC /* Project object */;
 }
