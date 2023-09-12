@@ -36,6 +36,7 @@ struct TodoListItem: View {
                    
                     todo.isCompletedd=isCompleted
                     listViewModel.updateItem(item: todo)
+                    triggerImpactHapticFeedback()
                     print(todo.isCompletedd)
                     
                 }
@@ -75,6 +76,13 @@ struct TodoListItem: View {
 //        }
 //        return index
 //    }
+    
+    func triggerImpactHapticFeedback() {
+        let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
+    }
+    
 }
 
 

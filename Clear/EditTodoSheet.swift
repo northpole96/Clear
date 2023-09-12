@@ -58,6 +58,7 @@ struct EditTodoSheet: View {
                     isPresented = false
                 },
                 trailing: Button("Save") {
+                    triggerImpactHapticFeedback()
                     todo.title=editedTitle
                     todo.caption=editedCaption
                     todo.isCompletedd=completionStatus
@@ -79,6 +80,13 @@ struct EditTodoSheet: View {
 //        }
 //        return index
 //    }
+    
+    
+    func triggerImpactHapticFeedback() {
+        let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
+    }
 }
 
 

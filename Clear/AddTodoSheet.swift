@@ -35,6 +35,7 @@ struct AddTodoSheet: View {
                 trailing: Button("Add") {
                     listViewModel.addItem(title: newTodoTitle, caption: newCaption)
                     isPresented = false
+                    triggerImpactHapticFeedback()
                 }.disabled(newTodoTitle.isEmpty)
             )
         }
@@ -49,6 +50,11 @@ struct AddTodoSheet: View {
         td.title = newTodoTitle
         td.caption = newCaption
         try? moc.save()
+    }
+    func triggerImpactHapticFeedback() {
+        let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
     }
 }
 

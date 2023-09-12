@@ -36,6 +36,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Add") {
                         isSheetPresented=true
+                        triggerImpactHapticFeedback()
                     }
                     .padding()
                     
@@ -63,7 +64,11 @@ struct ContentView: View {
         let randomTimeInterval = TimeInterval.random(in: -365.0 * 24.0 * 60.0 * 60.0*3.0 ... 0.0) // Random interval for the past year
         return currentDate.addingTimeInterval(randomTimeInterval)
     }
-    
+    func triggerImpactHapticFeedback() {
+        let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+        impactGenerator.prepare()
+        impactGenerator.impactOccurred()
+    }
    
  
 }
