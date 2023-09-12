@@ -71,6 +71,7 @@
 		1F1866DB2A7BDB7500C3ADAC /* Clear */ = {
 			isa = PBXGroup;
 			children = (
+				1F53476E2AB0370A005A7EEA /* Model */,
 				1F29B10F2AA9764500851076 /* Extensions */,
 				1F1866DC2A7BDB7500C3ADAC /* ClearApp.swift */,
 				1F1866DE2A7BDB7500C3ADAC /* ContentView.swift */,
@@ -80,9 +81,7 @@
 				1FDCF2762A9EE8A60056FE06 /* TodoListItem.swift */,
 				1F4146B52A9ADF94008D9F3D /* KeyboardTopView.swift */,
 				1FDCF2842A9F1E950056FE06 /* CheckboxToggleStyle2.swift */,
-				1F53476C2AB00857005A7EEA /* ListViewModel.swift */,
 				1F272A622AAFA066001EDD52 /* Todom.xcdatamodeld */,
-				1F272A652AAFA0C8001EDD52 /* DataController.swift */,
 				1F1866E02A7BDB7A00C3ADAC /* Assets.xcassets */,
 				1F1866E22A7BDB7A00C3ADAC /* Preview Content */,
 			);
@@ -103,6 +102,15 @@
 				1F29B1102AA9767B00851076 /* HexClor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1F53476E2AB0370A005A7EEA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F53476C2AB00857005A7EEA /* ListViewModel.swift */,
+				1F272A652AAFA0C8001EDD52 /* DataController.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
